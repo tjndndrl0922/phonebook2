@@ -26,7 +26,7 @@
 		핸드폰(hp): <input type="text" name="hp" value="<%=personVo.getHp()%>"><br>
 		회사(company): <input type="text" name="company" value="<%=personVo.getCompany()%>"><br>
 		
-		코드(id)<input type="hidden" name="id" value="<%=personVo.getPerson_id()%>"><br>
+		코드(id)<input type="hidden" name="update" value="<%=personVo.getPerson_id()%>"><br>
 		action <input type="hidden" name="action" value="update"><br>
 		<button type="submit">수정</button>
 	</form>
