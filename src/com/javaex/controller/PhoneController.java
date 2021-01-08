@@ -66,8 +66,14 @@ public class PhoneController extends HttpServlet {
 		} else if ("uform".equals(action)) {
 			System.out.println("수정 폼 처리");
 
+			int update = Integer.parseInt(request.getParameter("update"));
 			
-
+			PhoneDao phoneDao = new PhoneDao();
+			
+			PersonVo personVo = phoneDao.getPerson(update);
+			
+			request.setAttribute("uList", personVo);
+			
 			// jsp에 포워드 시킨다.
 			RequestDispatcher rd = request.getRequestDispatcher("./WEB-INF/updateForm.jsp");
 			rd.forward(request, response);
@@ -75,17 +81,25 @@ public class PhoneController extends HttpServlet {
 		} else if ("update".equals(action)) {
 			System.out.println("전화번호 수정");
 
+			String name = request.getParameter("name");
+			String hp = request.getParameter("hp");
+			String company = request.getParameter("company");
+			int update = Integer.parseInt(request.getParameter("update"));
 			
+			PersonVo personVo = new PersonVo(update, name, hp, company);
+			
+			PhoneDao phoneDao = new PhoneDao();
+			phoneDao.personUpdate(personVo);
 
 			response.sendRedirect("/phonebook2/pbc?action=list");
 
 		} else if ("delete".equals(action)) {
 			System.out.println("전화번호 삭제");
 
-			int personId = Integer.parseInt(request.getParameter("personId"));
+			int delete = Integer.parseInt(request.getParameter("delete"));
 
 			PhoneDao phoneDao = new PhoneDao();
-			phoneDao.personDelete(personId);
+			phoneDao.personDelete(delete);
 
 			response.sendRedirect("/phonebook2/pbc?action=list");
 		}

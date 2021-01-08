@@ -42,8 +42,8 @@
 				<td><%=personList.get(i).getCompany() %></td>
 			</tr>
 			<tr>
-				<td><a href="/phonebook2/pbc?action=uform">[수정]</a></td>
-				<td><a href="/phonebook2/pbc?action=delete">[삭제]</a></td>
+				<td><a href="/phonebook2/pbc?action=uform&update=<%=personList.get(i).getPerson_id()%>">[수정]</a></td>
+				<td><a href="/phonebook2/pbc?action=delete&delete=<%=personList.get(i).getPerson_id()%>">[삭제]</a></td>
 			</tr>
 		</table>
 		<br>
